@@ -13,12 +13,17 @@ const divIcons = {
 const FileList = ({ files }) => (
         <Container>
             { files.map((uploadedFile) => (
-                <li>
+                <li key={ uploadedFile.id }>
                     <FileInfo>
                         <Preview src={ uploadedFile.preview } />
                         <div>
                             <strong>{ uploadedFile.name }</strong>
-                            <span>{ uploadedFile.readableSize } <button onClick={ () => {} }>Excluir</button></span>
+                            <span>
+                                { uploadedFile.readableSize } 
+                                { !!uploadedFile.url && ( 
+                                    <button onClick={ () => {} }>Excluir</button>
+                                ) }
+                            </span>
                         </div>
                     </FileInfo>
 
