@@ -10,7 +10,7 @@ const divIcons = {
     alignItems: 'center'
 }
 
-const FileList = ({ files }) => (
+const FileList = ({ files, onDelete }) => (
         <Container>
             { files.map((uploadedFile) => (
                 <li key={ uploadedFile.id }>
@@ -21,7 +21,7 @@ const FileList = ({ files }) => (
                             <span>
                                 { uploadedFile.readableSize } 
                                 { !!uploadedFile.url && ( 
-                                    <button onClick={ () => {} }>Excluir</button>
+                                    <button onClick={ () => onDelete(uploadedFile.id) }>Excluir</button>
                                 ) }
                             </span>
                         </div>
@@ -40,7 +40,7 @@ const FileList = ({ files }) => (
                         ) }
                         { uploadedFile.url && (
                             <a 
-                                href='http://localhost:3000/files/08fdac4722e0d1a21e383bad47262b9e-profile.png'
+                                href={uploadedFile.url}
                                 target='_blank'
                                 rel='noopener noreferrer'
                             >
